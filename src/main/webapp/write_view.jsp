@@ -23,8 +23,7 @@
 				<td><textarea name="bcontent" rows="10" cols="46"></textarea></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="입력"></td>
-				<td><a href="list.do">글 리스트 보기</a></td>
+				<td colspan="2"><input type="submit" value="입력">&nbsp;&nbsp;&nbsp;&nbsp;<a href="list.do">글 리스트 보기</a></td>
 			</tr>		
 		</form>	
 	</table>

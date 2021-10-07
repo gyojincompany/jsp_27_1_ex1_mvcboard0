@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javagyojin.ex.command.BCommand;
+import com.javagyojin.ex.command.BListCommand;
 import com.javagyojin.ex.command.BWriteCommand;
 
 /**
@@ -61,13 +62,15 @@ public class BFrontController extends HttpServlet {
 		} else if(com.equals("/write.do")) {
 			command = new BWriteCommand();
 			command.execute(request, response);
-			//viewPage = "list.do";			
+			viewPage = "list.do";			
 		} else if(com.equals("/list.do")) {
-			System.out.println("update command »£√‚");
+			command = new BListCommand();
+			command.execute(request, response);
+			viewPage = "list.jsp";
 		}
 		
-		//RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		//dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
 	}
 
 }
