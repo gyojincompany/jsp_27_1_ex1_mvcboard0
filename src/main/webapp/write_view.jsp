@@ -20,7 +20,7 @@
 			</tr>
 			<tr>
 				<td>내 용</td>
-				<td><textarea name="bcontent" rows="10" cols="46"></textarea></td>
+				<td><textarea name="bcontent" rows="10" cols="46">200자 이내로 작성하시오</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="입력">&nbsp;&nbsp;&nbsp;&nbsp;<a href="list.do">글 리스트 보기</a></td>

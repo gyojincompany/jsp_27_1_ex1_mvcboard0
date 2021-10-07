@@ -30,7 +30,7 @@
 		</c:forEach>
 		
 		<tr>
-			<td colspan="5"><a href="write_view.jsp">게시글 작성</a></td>
+			<td colspan="5"><a href="write_view.do">게시글 작성</a></td>
 		</tr>
 	</table>
 </body>

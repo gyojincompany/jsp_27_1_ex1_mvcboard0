@@ -112,8 +112,6 @@ public class BDao {
 	
 	public BDto contentView(String sid) {
 		
-		
-		
 		BDto dto = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -121,6 +119,12 @@ public class BDao {
 		String query = "select * from mvc_board where bid = ?";
 		
 		try {
+			connection = datasource.getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(sid));
+			resultSet = preparedStatement.executeQuery();
+			
+			
 			if(resultSet.next()) {
 				int bid = resultSet.getInt("bid");
 				String bname = resultSet.getString("bname");
@@ -142,15 +146,15 @@ public class BDao {
 				if(resultSet !=null) resultSet.close();
 				if(preparedStatement !=null) preparedStatement.close();
 				if(connection != null) connection.close();
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
-		
+		}
 		return dto;
 		
-	}
 	
+	}
 
 }
