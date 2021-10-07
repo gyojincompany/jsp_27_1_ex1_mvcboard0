@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javagyojin.ex.command.BCommand;
+import com.javagyojin.ex.command.BContentCommand;
 import com.javagyojin.ex.command.BListCommand;
 import com.javagyojin.ex.command.BWriteCommand;
 
@@ -67,6 +68,10 @@ public class BFrontController extends HttpServlet {
 			command = new BListCommand();
 			command.execute(request, response);
 			viewPage = "list.jsp";
+		} else if(com.equals("content_view.do")) {
+			command = new BContentCommand();
+			command.execute(request, response);
+			viewPage = "content_view.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

@@ -110,5 +110,47 @@ public class BDao {
 		
 	}
 	
+	public BDto contentView(String sid) {
+		
+		
+		
+		BDto dto = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from mvc_board where bid = ?";
+		
+		try {
+			if(resultSet.next()) {
+				int bid = resultSet.getInt("bid");
+				String bname = resultSet.getString("bname");
+				String btitle = resultSet.getString("btitle");
+				String bcontent = resultSet.getString("bcontent");
+				Timestamp bdate = resultSet.getTimestamp("bdate");
+				int bhit = resultSet.getInt("bhit");
+				int bgroup = resultSet.getInt("bgroup");
+				int bstep = resultSet.getInt("bstep");
+				int bindent = resultSet.getInt("bindent");
+				
+				dto = new BDto(bid, bname, btitle, bcontent, bdate, bhit, bgroup, bstep, bindent);				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(resultSet !=null) resultSet.close();
+				if(preparedStatement !=null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		
+		return dto;
+		
+	}
+	
 
 }

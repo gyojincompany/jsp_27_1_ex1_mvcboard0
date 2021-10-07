@@ -9,6 +9,7 @@
 <title>list.jsp</title>
 </head>
 <body>
+	<h1>자유게시판 리스트</h1>
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
 		<tr>
 			<td>번호</td>
@@ -21,7 +22,7 @@
 		<c:forEach items="${list }" var="dto">
 			<tr>
 				<td>${dto.bid }</td>
-				<td>${dto.btitle }</td>
+				<td><a href="content_view.do?bid=${dto.bid }">${dto.btitle }</a></td>
 				<td>${dto.bname }</td>
 				<td>${dto.bdate }</td>
 				<td>${dto.bhit }</td>
