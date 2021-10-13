@@ -55,7 +55,7 @@ public class BDao {
 			try {
 				if(preparedStatement !=null) preparedStatement.close();
 				if(connection != null) connection.close();
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -155,6 +155,42 @@ public class BDao {
 		return dto;
 		
 	
+	}
+
+	public void modify(String bid, String bname, String btitle, String bcontent) {
+		// TODO Auto-generated method stub
+		
+		Connection connection = null;//conn
+		PreparedStatement preparedStatement = null;//psmt
+		
+		
+		
+		try {
+			connection = datasource.getConnection();
+			String query = "update mvc_board set bname = ?, btitle = ?, bcontent = ? where bid = ?";
+			
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, bname);
+			preparedStatement.setString(2, btitle);
+			preparedStatement.setString(3, bcontent);
+			preparedStatement.setInt(4, Integer.parseInt(bid));
+			
+			int rn = preparedStatement.executeUpdate();			
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement !=null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 }
