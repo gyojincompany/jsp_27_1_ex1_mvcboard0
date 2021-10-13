@@ -14,6 +14,8 @@ import com.javagyojin.ex.command.BContentCommand;
 import com.javagyojin.ex.command.BDeleteCommand;
 import com.javagyojin.ex.command.BListCommand;
 import com.javagyojin.ex.command.BModifyCommand;
+import com.javagyojin.ex.command.BReplyCommand;
+import com.javagyojin.ex.command.BReplyViewCommand;
 import com.javagyojin.ex.command.BWriteCommand;
 
 /**
@@ -82,7 +84,16 @@ public class BFrontController extends HttpServlet {
 			command = new BDeleteCommand();
 			command.execute(request, response);
 			viewPage = "list.do";
+		} else if(com.equals("/reply_view.do")) {
+			command = new BReplyViewCommand();
+			command.execute(request, response);
+			viewPage = "reply_view.jsp";//덧글 쓰기 페이지
+		} else if(com.equals("/reply.do")) {
+			command = new BReplyCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
 		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}

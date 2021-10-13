@@ -29,7 +29,7 @@
 			</tr>
 			<tr>
 				<td align="center"><input type="submit" value="수정"></td>
-				<td colspan="3"><a href="list.do">글목록보기</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="delete.do?bid=${content_view.bid }">삭 제</a>&nbsp;&nbsp;&nbsp;&nbsp;답 변 </td>
+				<td colspan="3"><a href="list.do">글목록보기</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="delete.do?bid=${content_view.bid }">삭 제</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="reply_view.do?bid=${content_view.bid }">답 변</a> </td>
 			</tr>		
 		</form>
 	

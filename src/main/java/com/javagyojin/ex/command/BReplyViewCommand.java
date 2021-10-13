@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.javagyojin.ex.dao.BDao;
 import com.javagyojin.ex.dto.BDto;
 
-public class BContentCommand implements BCommand {
+public class BReplyViewCommand implements BCommand {
 
-	public BContentCommand() {
+	public BReplyViewCommand() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -18,9 +18,10 @@ public class BContentCommand implements BCommand {
 		
 		String bid = request.getParameter("bid");
 		BDao dao = new BDao();
-		BDto dto = dao.contentView(bid);	
+		BDto dto = dao.reply_view(bid);	
 		
-		request.setAttribute("content_view", dto);
+		request.setAttribute("reply_view", dto);
+		
 		
 	}
 
