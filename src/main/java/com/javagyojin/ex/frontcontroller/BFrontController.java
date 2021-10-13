@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.javagyojin.ex.command.BCommand;
 import com.javagyojin.ex.command.BContentCommand;
+import com.javagyojin.ex.command.BDeleteCommand;
 import com.javagyojin.ex.command.BListCommand;
 import com.javagyojin.ex.command.BModifyCommand;
 import com.javagyojin.ex.command.BWriteCommand;
@@ -77,8 +78,11 @@ public class BFrontController extends HttpServlet {
 			command = new BModifyCommand();
 			command.execute(request, response);
 			viewPage = "list.do";
+		} else if(com.equals("/delete.do")) {
+			command = new BDeleteCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
 		}
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}

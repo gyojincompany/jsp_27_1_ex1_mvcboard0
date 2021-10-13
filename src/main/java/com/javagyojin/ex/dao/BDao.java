@@ -193,4 +193,36 @@ public class BDao {
 		
 	}
 
+	public void delete(String bid) {
+		// TODO Auto-generated method stub
+		
+		Connection connection = null;//conn
+		PreparedStatement preparedStatement = null;//psmt
+				
+		
+		try {
+			connection = datasource.getConnection();
+			String query = "delete from mvc_board where bid = ?";
+			
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(bid));
+			
+			int rn = preparedStatement.executeUpdate();			
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement !=null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
 }
