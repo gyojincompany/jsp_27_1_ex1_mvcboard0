@@ -278,6 +278,8 @@ public class BDao {
 			String bindent) {
 		// TODO Auto-generated method stub
 		
+		replyShape(bgroup, bstep);
+		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		String query = "insert into mvc_board (bid, bname, btitle, bcontent, bgroup, bstep, bindent) "
@@ -312,6 +314,36 @@ public class BDao {
 		
 	}
 	
+	private void replyShape(String strGroup, String strStep) { //새로운 덧글이 생성될때마다 해당 id의 step값을 1씩 증가
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = datasource.getConnection();
+			String query = "update mvc_board set bstep=bstep+1 where bgroup =? and bstep > ?";
+			
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(strGroup));
+			preparedStatement.setInt(2, Integer.parseInt(strStep));
+			
+			int rn = preparedStatement.executeUpdate();//글 내용 저장이 성공하면 rn=1			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+		} finally {
+			try {
+				if(preparedStatement !=null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
 	
 	
 
