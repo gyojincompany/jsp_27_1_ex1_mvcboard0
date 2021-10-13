@@ -112,6 +112,8 @@ public class BDao {
 	
 	public BDto contentView(String sid) {
 		
+		makeHit(sid);
+		
 		BDto dto = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -342,6 +344,38 @@ public class BDao {
 				e.printStackTrace();
 			}
 		}
+		
+	}
+	
+	private void makeHit (String bid) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = datasource.getConnection();
+			String query = "update mvc_board set bhit=bhit+1 where bid = ?";
+			
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(bid));
+			
+			
+			int rn = preparedStatement.executeUpdate();//글 내용 저장이 성공하면 rn=1			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+		} finally {
+			try {
+				if(preparedStatement !=null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		
 	}
 	
